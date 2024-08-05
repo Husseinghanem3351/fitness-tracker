@@ -1,4 +1,3 @@
-import 'package:fitness_tracker2/features/Home/presentation/cubit/cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

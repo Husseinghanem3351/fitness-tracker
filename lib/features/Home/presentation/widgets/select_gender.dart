@@ -2,8 +2,6 @@ import 'package:fitness_tracker2/features/Home/presentation/cubit/cubit.dart';
 import 'package:fitness_tracker2/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
-import '../cubit/cubit.dart';
-
 
 class SelectGender extends StatefulWidget {
   const SelectGender({

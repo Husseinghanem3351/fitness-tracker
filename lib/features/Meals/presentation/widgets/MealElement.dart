@@ -1,5 +1,4 @@
 import 'dart:ui';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -8,7 +7,6 @@ import 'package:flutter/widgets.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../global/widgets/default_button.dart';
 import '../../../../global/widgets/delete_dialog.dart';
-import '../../../Home/presentation/cubit/cubit.dart';
 import '../../domain/entities/meal.dart';
 import '../bloc/MealsCubit/MealsCubit.dart';
 

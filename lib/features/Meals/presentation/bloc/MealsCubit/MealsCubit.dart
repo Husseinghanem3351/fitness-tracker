@@ -1,9 +1,4 @@
 import 'package:fitness_tracker2/features/Meals/domain/entities/meal.dart';
-import 'package:fitness_tracker2/features/Meals/domain/use_cases/addMeal.dart';
-import 'package:fitness_tracker2/features/Meals/domain/use_cases/deleteMeal.dart';
-import 'package:fitness_tracker2/features/Meals/domain/use_cases/getAllMeals.dart';
-import 'package:fitness_tracker2/features/Meals/domain/use_cases/searchMeal.dart';
-import 'package:fitness_tracker2/features/Meals/domain/use_cases/updateMeal.dart';
 import 'package:fitness_tracker2/use_cases.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dartz/dartz.dart';

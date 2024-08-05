@@ -1,9 +1,6 @@
 import 'package:fitness_tracker2/features/Home/presentation/widgets/select_gender.dart';
 import 'package:fitness_tracker2/generated/l10n.dart';
 import 'package:fitness_tracker2/global/global_methods.dart';
-import 'package:fitness_tracker2/global/global_methods.dart';
-import 'package:fitness_tracker2/global/global_methods.dart';
-import 'package:fitness_tracker2/global/global_methods.dart';
 import 'package:fitness_tracker2/global/widgets/default_text_form_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

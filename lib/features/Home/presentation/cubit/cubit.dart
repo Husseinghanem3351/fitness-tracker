@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:fitness_tracker2/features/Home/data/cache%20helper.dart';
 import 'package:fitness_tracker2/features/Home/data/model.dart';
 import 'package:fitness_tracker2/features/Home/presentation/cubit/states.dart';
-import 'package:fitness_tracker2/global/global_methods.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,4 +1,4 @@
-import '../../../../global/global.dart';
+
 import '../../domain/entities/burning.dart';
 
 class BurningCaloriesModel extends Burning {

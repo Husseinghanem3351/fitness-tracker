@@ -1,7 +1,6 @@
 import 'package:fitness_tracker2/features/Details/domain/entities/eating.dart';
 import 'package:fitness_tracker2/features/Details/presentation/bloc/cubit.dart';
 import 'package:fitness_tracker2/features/Details/presentation/bloc/states.dart';
-import 'package:fitness_tracker2/features/Meals/presentation/widgets/add%20new%20meal%20sheet.dart';
 import 'package:fitness_tracker2/global/widgets/show_toast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
