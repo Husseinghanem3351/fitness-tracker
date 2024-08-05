@@ -68,11 +68,7 @@ void addActivityToBurningSheet(context, {required Activity activity}) {
                           DetailsCubit.get(context).addToBurningCalories(
                             Burning(
                               duration: double.parse(durationController.text),
-                              date: DateTime(
-                                DateTime.now().year,
-                                DateTime.now().month,
-                                DateTime.now().day,
-                              ),
+                              date: DateTime.now(),
                               calories: calories.toDouble(),
                               activityName: activity.name,
                             ),

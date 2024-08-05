@@ -36,7 +36,8 @@ void addMealToEatingSheet(context, {required Meal meal}) {
                 Row(
                   children: [
                     Text(
-                      meal.calories.toString(),
+                      meal.calories.ceilToDouble().toString(),
+
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                     Text(
@@ -82,11 +83,7 @@ void addMealToEatingSheet(context, {required Meal meal}) {
                                 double.parse(quantityController.text);
                             DetailsCubit.get(context).addToEatingCalories(
                               Eating(
-                                date: DateTime(
-                                  DateTime.now().year,
-                                  DateTime.now().month,
-                                  DateTime.now().day,
-                                ),
+                                date: DateTime.now(),
                                 quantity: quantity,
                                 calories: meal.calories * quantity / 100,
                                 protein: meal.protein * quantity / 100,

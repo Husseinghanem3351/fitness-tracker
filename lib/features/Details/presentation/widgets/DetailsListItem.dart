@@ -161,7 +161,7 @@ class _DetailsItemState extends State<DetailsItem> {
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   Text(
-                    '${widget.detailItems.carb} ${S.of(context).g}',
+                    '${widget.detailItems.carb.round()} ${S.of(context).g}',
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ],
@@ -173,7 +173,7 @@ class _DetailsItemState extends State<DetailsItem> {
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   Text(
-                    '${widget.detailItems.protein} ${S.of(context).g}',
+                    '${widget.detailItems.protein.round()} ${S.of(context).g}',
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ],
@@ -185,7 +185,7 @@ class _DetailsItemState extends State<DetailsItem> {
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   Text(
-                    '${widget.detailItems.fat} ${S.of(context).g}',
+                    '${widget.detailItems.fat.round()} ${S.of(context).g}',
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ],

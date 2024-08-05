@@ -20,7 +20,7 @@ class ActivityModel extends Activity {
   Map<String, dynamic> toJson() {
     return {
       'title':title,
-      'MES': MES,
+      'MES': MES..round(),
       'id':id,
       'name':name,
     };

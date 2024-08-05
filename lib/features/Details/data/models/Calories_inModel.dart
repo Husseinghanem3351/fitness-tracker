@@ -30,13 +30,13 @@ class EatingCaloriesModel extends Eating {
 
   Map<String, dynamic> toJson() {
     return {
-      'quantity': quantity,
+      'quantity': quantity?.round(),
       'date': date!.toIso8601String(),
-      'carb':carb,
-      'fat':fat,
-      'protein':protein,
+      'carb':carb?.round(),
+      'fat':fat?.round(),
+      'protein':protein?.round(),
       'name':mealName,
-      'calories':calories,
+      'calories':calories?.round(),
     };
   }
 }

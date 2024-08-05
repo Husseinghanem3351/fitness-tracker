@@ -28,10 +28,10 @@ class MealModel extends Meal {
 
   Map<String, dynamic> toJson() {
     return {
-      'calories': calories,
-      'fat': fat,
-      'carb': carb,
-      'protein': protein,
+      'calories': calories.round(),
+      'fat': fat.round(),
+      'carb': carb.round(),
+      'protein': protein.round(),
       'name': name,
       // 'nameDefaultQuantity':defaultValueName,
       // 'defaultQuantity':defaultValue,

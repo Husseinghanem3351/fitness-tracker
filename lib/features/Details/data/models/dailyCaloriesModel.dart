@@ -29,13 +29,13 @@ class DailyCaloriesModel extends DailyCalories {
     // var dateFormat=formatter.format(date!);
 
     return {
-      'goalCalories': goalCalories,
+      'goalCalories': goalCalories?.round(),
       'date': date.toString().substring(0, 10),
-      'burnedCal': burningCalories,
-      'eatingCal': eatingCalories,
-      'protein': protein,
-      'fat': fat,
-      'carb': carb,
+      'burnedCal': burningCalories?.round(),
+      'eatingCal': eatingCalories?.round(),
+      'protein': protein?.round(),
+      'fat': fat?.round(),
+      'carb': carb?.round(),
     };
   }
 }

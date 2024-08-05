@@ -16,49 +16,6 @@ class DetailsCubit extends Cubit<DetailsStates> {
 
   static DetailsCubit get(context) => BlocProvider.of(context);
 
-  //
-  // GetAllEatingCalories getAllEatingCalories = GetAllEatingCalories(
-  //   repositories: DetailsRepoImpl(
-  //     detailsLocalDataSource: DetailsLocalDataSourceImpl(),
-  //   ),
-  // );
-  // GetAllBurningCalories getAllBurningCalories = GetAllBurningCalories(
-  //   repositories: DetailsRepoImpl(
-  //     detailsLocalDataSource: DetailsLocalDataSourceImpl(),
-  //   ),
-  // );
-  // AddEatingCaloriesUseCase addEatingCaloriesUseCase = AddEatingCaloriesUseCase(
-  //   repository: DetailsRepoImpl(
-  //     detailsLocalDataSource: DetailsLocalDataSourceImpl(),
-  //   ),
-  // );
-  // AddBurningCaloriesUseCase addBurningCaloriesUseCase =
-  //     AddBurningCaloriesUseCase(
-  //   repository: DetailsRepoImpl(
-  //     detailsLocalDataSource: DetailsLocalDataSourceImpl(),
-  //   ),
-  // );
-  // DeleteBurningCalories deleteBurningCaloriesUseCase = DeleteBurningCalories(
-  //   repository: DetailsRepoImpl(
-  //     detailsLocalDataSource: DetailsLocalDataSourceImpl(),
-  //   ),
-  // );
-  // DeleteEatingCalories deleteEatingCaloriesUseCase = DeleteEatingCalories(
-  //   repository: DetailsRepoImpl(
-  //     detailsLocalDataSource: DetailsLocalDataSourceImpl(),
-  //   ),
-  // );
-  // UpdateCaloriesUseCase updateCaloriesUseCase = UpdateCaloriesUseCase(
-  //   repositories: DetailsRepoImpl(
-  //     detailsLocalDataSource: DetailsLocalDataSourceImpl(),
-  //   ),
-  // );
-  // GetDailyCaloriesUseCase getDailyCaloriesUseCase = GetDailyCaloriesUseCase(
-  //   repository: DetailsRepoImpl(
-  //     detailsLocalDataSource: DetailsLocalDataSourceImpl(),
-  //   ),
-  // );
-
   List details = [];
   List showDetails = []; // if day I will show just day details
   List<DailyCalories> dailyCalories = [];

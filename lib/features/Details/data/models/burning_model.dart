@@ -11,21 +11,20 @@ class BurningCaloriesModel extends Burning {
   });
 
   factory BurningCaloriesModel.fromJson(Map<String, dynamic> json) {
-    print(json);
     return BurningCaloriesModel(
-      activityName: json['name'].toString(),
-      calories: double.parse(json['calories']).toDouble(),
+      activityName: json['name'],
+      calories: json['calories'],
       date: DateTime.parse(json['date']),
-      id: int.parse(json['id']),
-      duration: double.parse(json['duration']).toDouble(),
+      id: json['id'],
+      duration: json['duration'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'duration': duration,
+      'duration': duration?.round(),
       'date': date!.toIso8601String(),
-      'calories':calories,
+      'calories':calories?.round(),
       'name':activityName,
     };
   }

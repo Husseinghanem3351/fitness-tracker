@@ -86,12 +86,6 @@ Future<Unit> createDatabase() async {
         });
       },
       onOpen: (database) async {
-        // database.execute(
-        //   'drop table if  exists burning',
-        // );
-        // database.execute(
-        //   'create table if not exists burning(id integer primary key, date text,name text,calories double,duration Real )',
-        // );
         // List<MealModel> basicMeals=[
         //   const MealModel(
         //     carb: 28.5,

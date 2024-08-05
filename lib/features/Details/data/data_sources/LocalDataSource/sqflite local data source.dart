@@ -72,7 +72,7 @@ class DetailsLocalDataSourceImpl implements DetailsLocalDataSource {
   Future<Unit> deleteEatingCaloriesData(int id) async {
     try {
       await database.transaction(
-          (txn) => txn.rawDelete('delete from eating where id =$id)'));
+          (txn) => txn.rawDelete('delete from eating where id =$id'));
       return unit;
     } catch (error) {
       throw DatabaseException;
@@ -146,6 +146,7 @@ class DetailsLocalDataSourceImpl implements DetailsLocalDataSource {
           database.rawQuery('delete from burning where id =${e['id']}');
         }
         return BurningCaloriesModel.fromJson(e);
+
       }).toList();
       return burningCalories;
     } catch (error) {

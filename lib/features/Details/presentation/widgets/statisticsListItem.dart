@@ -35,7 +35,7 @@ class StatisticsListItem  extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            '${dailyCalories.eatingCalories}',
+                            '${dailyCalories.eatingCalories?.round()}',
                             style: Theme.of(context).textTheme.bodySmall,
                           ),
                           const SizedBox(width: 10,),
@@ -53,7 +53,7 @@ class StatisticsListItem  extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            '${dailyCalories.burningCalories}',
+                            '${dailyCalories.burningCalories?.round()}',
                             style: Theme.of(context).textTheme.bodySmall,
                           ),
                           const SizedBox(width: 10,),
@@ -95,7 +95,7 @@ class StatisticsListItem  extends StatelessWidget {
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
                       Text(
-                        '${dailyCalories.protein} ${S.of(context).g}',
+                        '${dailyCalories.protein?.round()} ${S.of(context).g}',
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ],
@@ -107,7 +107,7 @@ class StatisticsListItem  extends StatelessWidget {
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
                       Text(
-                        '${dailyCalories.fat} ${S.of(context).g}',
+                        '${dailyCalories.fat?.round()} ${S.of(context).g}',
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ],
@@ -119,7 +119,7 @@ class StatisticsListItem  extends StatelessWidget {
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
                       Text(
-                        '${dailyCalories.carb} ${S.of(context).g}',
+                        '${dailyCalories.carb?.round()} ${S.of(context).g}',
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ],
