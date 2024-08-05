@@ -1,5 +1,6 @@
 # fitness_tracker2
 meals data and activites data, should add in your hand in global method file, onOpen just add this:
+
 List<MealModel> basicMeals=[
            const MealModel(
              carb: 28.5,
@@ -9,10 +10,12 @@ List<MealModel> basicMeals=[
              calories: 130,
            ), // add how much you want.
          ];
+         
          basicMeals.forEach((element) {database.insert(
              'basicMeals',element.toJson()); });
          activitiesWithMETS.forEach((key, value) => database.insert(
                    'activities',ActivityModel(MES:value,name: key.$2,title: key.$1).toJson()));
+                   
 
 
 **** the right way is using a backend to upload meals and activities and get it ***
