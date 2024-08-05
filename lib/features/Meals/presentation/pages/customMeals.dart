@@ -3,9 +3,9 @@ import 'package:fitness_tracker2/features/Meals/presentation/bloc/MealsCubit/Mea
 import 'package:fitness_tracker2/features/Meals/presentation/pages/SaveCustomMeal.dart';
 import 'package:fitness_tracker2/features/Meals/presentation/widgets/MealElement.dart';
 import 'package:fitness_tracker2/features/Meals/presentation/widgets/add%20new%20meal%20sheet.dart';
-import 'package:fitness_tracker2/global/globalMethods.dart';
-import 'package:fitness_tracker2/global/widgets/Toast.dart';
-import 'package:fitness_tracker2/global/widgets/defaultButton.dart';
+import 'package:fitness_tracker2/global/global_methods.dart';
+import 'package:fitness_tracker2/global/widgets/show_toast.dart';
+import 'package:fitness_tracker2/global/widgets/default_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';

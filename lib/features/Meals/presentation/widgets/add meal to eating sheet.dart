@@ -2,14 +2,14 @@ import 'package:fitness_tracker2/features/Details/domain/entities/eating.dart';
 import 'package:fitness_tracker2/features/Details/presentation/bloc/cubit.dart';
 import 'package:fitness_tracker2/features/Details/presentation/bloc/states.dart';
 import 'package:fitness_tracker2/features/Meals/presentation/widgets/add%20new%20meal%20sheet.dart';
-import 'package:fitness_tracker2/global/widgets/Toast.dart';
+import 'package:fitness_tracker2/global/widgets/show_toast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../generated/l10n.dart';
-import '../../../../global/globalMethods.dart';
-import '../../../../global/widgets/defaultButton.dart';
-import '../../../../global/widgets/defaultTextFormField.dart';
+import '../../../../global/global_methods.dart';
+import '../../../../global/widgets/default_button.dart';
+import '../../../../global/widgets/default_text_form_field.dart';
 import '../../domain/entities/meal.dart';
 
 void addMealToEatingSheet(context, {required Meal meal}) {
@@ -89,11 +89,11 @@ void addMealToEatingSheet(context, {required Meal meal}) {
                                   DateTime.now().day,
                                 ),
                                 quantity: quantity,
-                                calories: meal.calories * quantity ~/ 100,
-                                protein: meal.protein * quantity ~/ 100,
-                                carb: meal.carb * quantity ~/ 100,
+                                calories: meal.calories * quantity / 100,
+                                protein: meal.protein * quantity / 100,
+                                carb: meal.carb * quantity / 100,
                                 mealName: meal.name,
-                                fat: meal.fat * quantity ~/ 100,
+                                fat: meal.fat * quantity / 100,
                               ),
                             );
                           }

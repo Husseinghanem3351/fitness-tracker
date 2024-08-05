@@ -1,13 +1,10 @@
 import 'dart:convert';
-
-import 'package:fitness_tracker2/features/Home/presentation/screens/goalsScreen.dart';
-import 'package:fitness_tracker2/features/Home/presentation/screens/personal%20info.dart';
+import 'package:fitness_tracker2/features/Home/presentation/screens/goals_screen.dart';
+import 'package:fitness_tracker2/features/Home/presentation/screens/personal_info.dart';
 import 'package:fitness_tracker2/generated/l10n.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import '../../../../global/global.dart';
-import '../../../../global/globalMethods.dart';
+import '../../../../global/global_methods.dart';
 import '../../data/cache helper.dart';
 import '../../data/model.dart';
 import '../cubit/cubit.dart';
@@ -63,7 +60,10 @@ class _InfoScreenState extends State<InfoScreen> {
           ),
         ],
       ),
-    ];
+    ]; // this list to show two screens together in the info screen,
+    // the first for personal info,
+    // and the second one for goals and activity level
+    // we can switch between them in previous and next button
     return Scaffold(
       appBar: AppBar(),
       floatingActionButton: FloatingActionButton(
@@ -83,7 +83,6 @@ class _InfoScreenState extends State<InfoScreen> {
                   gender: HomeCubit.get(context).gender,
                   age: double.parse(ageController.text),
                   height: double.parse(heightController.text),
-                  waterGoal: 2,
                   weight: double.parse(weightController.text),
                   name: nameController.text,
                 ).toJson(),

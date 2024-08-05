@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../generated/l10n.dart';
-import '../../../../global/widgets/Toast.dart';
-import '../../../../global/widgets/defaultTextFormField.dart';
+import '../../../../global/widgets/show_toast.dart';
+import '../../../../global/widgets/default_text_form_field.dart';
 import '../../domain/entities/activity.dart';
 import '../bloc/ActivitiesBloc/cubit.dart';
 import '../bloc/ActivitiesBloc/states.dart';
@@ -39,12 +39,12 @@ class ActivitiesScreen extends StatelessWidget {
                     textInputType: TextInputType.text,
                     onFieldSubmitted: (value) {
                       ActivitiesCubit.get(context)
-                          .searchMeal(searchController.text);
+                          .searchActivity(searchController.text);
                     },
                     onChanged: (value) {
                       if (value.isEmpty) {
                         ActivitiesCubit.get(context)
-                            .searchMeal(searchController.text);
+                            .searchActivity(searchController.text);
                       }
                     },
                     textInputAction: TextInputAction.search,

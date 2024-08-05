@@ -1,12 +1,12 @@
 import 'package:fitness_tracker2/features/Details/domain/entities/burning.dart';
 import 'package:fitness_tracker2/features/Details/presentation/bloc/cubit.dart';
-import 'package:fitness_tracker2/global/widgets/Toast.dart';
+import 'package:fitness_tracker2/global/widgets/show_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../global/global.dart';
-import '../../../../global/widgets/defaultButton.dart';
-import '../../../../global/widgets/defaultTextFormField.dart';
+import '../../../../global/widgets/default_button.dart';
+import '../../../../global/widgets/default_text_form_field.dart';
 import '../../../Details/presentation/bloc/states.dart';
 import '../../domain/entities/activity.dart';
 
@@ -73,7 +73,7 @@ void addActivityToBurningSheet(context, {required Activity activity}) {
                                 DateTime.now().month,
                                 DateTime.now().day,
                               ),
-                              calories: calories.toInt(),
+                              calories: calories.toDouble(),
                               activityName: activity.name,
                             ),
                           );

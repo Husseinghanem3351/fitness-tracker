@@ -4,11 +4,11 @@ import '../entities/meal.dart';
 import '../repositories/repositories.dart';
 
 class SearchMealUseCase{
-  MealsRepositories repositories;
-  SearchMealUseCase({required this.repositories});
+  MealsRepositories repository;
+  SearchMealUseCase({required this.repository});
 
   Future<Either<Failure,(List<Meal>,List<Meal>)>> call (String name)async{
-    return await repositories.searchMeal(name);
+    return await repository.searchMeal(name);
 
   }
 }

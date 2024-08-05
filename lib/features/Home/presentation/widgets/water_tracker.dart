@@ -1,7 +1,7 @@
 import 'package:fitness_tracker2/generated/l10n.dart';
+import 'package:fitness_tracker2/global/global.dart';
 import 'package:flutter/material.dart';
 import '../cubit/cubit.dart';
-import 'package:hexcolor/hexcolor.dart';
 
 class WaterTracker extends StatelessWidget {
   const WaterTracker({
@@ -35,7 +35,7 @@ class WaterTracker extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  '${S.of(context).goal} 2.00',
+                  '${S.of(context).goal} $waterRequired',
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
                 const SizedBox(
@@ -70,7 +70,7 @@ class WaterTracker extends StatelessWidget {
                           color: Colors.blue,
                           size: 40,
                         ),
-                        if (index == 7)
+                        if ((index+1)*.25>=waterRequired&&(index+1)*.25<=waterRequired+.25)
                           const Icon(
                             Icons.check_rounded,
                             color: Colors.green,

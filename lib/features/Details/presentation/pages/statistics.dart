@@ -1,7 +1,7 @@
 import 'package:fitness_tracker2/features/Details/presentation/bloc/cubit.dart';
 import 'package:fitness_tracker2/features/Details/presentation/bloc/states.dart';
 import 'package:fitness_tracker2/features/Details/presentation/widgets/statisticsListItem.dart';
-import 'package:fitness_tracker2/global/widgets/Toast.dart';
+import 'package:fitness_tracker2/global/widgets/show_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

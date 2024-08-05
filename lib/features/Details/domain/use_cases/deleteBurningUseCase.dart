@@ -2,10 +2,10 @@ import '../../../../global/errors/failure.dart';
 import '../repositories/repositories.dart';
 import 'package:dartz/dartz.dart';
 
-class DeleteBurningCalories{
+class DeleteBurningCaloriesUseCase{
 
   DetailsRepositories repository;
-  DeleteBurningCalories({
+  DeleteBurningCaloriesUseCase({
     required this.repository,
   });
 

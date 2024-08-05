@@ -36,14 +36,14 @@ abstract class DetailsLocalDataSource {
 class DetailsLocalDataSourceImpl implements DetailsLocalDataSource {
   @override
   Future<List<Eating>> getEatingCaloriesData(Database database) async {
-    List<Eating> eatingCalories=[];
+    List<Eating> eatingCalories = [];
     try {
       List<Map<String, Object?>> eating =
           await database.rawQuery('select * from eating');
       eatingCalories = eating.map<Eating>((e) {
         if (DateTime.now()
-            .difference(DateTime.parse(e['date'].toString()))
-            .inDays >
+                .difference(DateTime.parse(e['date'].toString()))
+                .inDays >
             7) {
           database.rawQuery('delete from eating where id =${e['id']}');
         }
@@ -116,7 +116,6 @@ class DetailsLocalDataSourceImpl implements DetailsLocalDataSource {
       carb: globalCarb,
     );
     if (dailyCalories.isEmpty) {
-
       await database.transaction((txn) => txn.insert(
             'dailyCalories',
             dailyCaloriesModel.toJson(),
@@ -150,7 +149,7 @@ class DetailsLocalDataSourceImpl implements DetailsLocalDataSource {
       }).toList();
       return burningCalories;
     } catch (error) {
-
+      print(error);
       throw DatabaseException;
     }
   }
@@ -165,7 +164,6 @@ class DetailsLocalDataSourceImpl implements DetailsLocalDataSource {
           ));
       return unit;
     } catch (error) {
-
       throw DatabaseException;
     }
   }
@@ -177,7 +175,6 @@ class DetailsLocalDataSourceImpl implements DetailsLocalDataSource {
           (txn) => txn.rawDelete('delete from burning where id =$id)'));
       return unit;
     } catch (error) {
-
       throw DatabaseException;
     }
   }
@@ -196,7 +193,6 @@ class DetailsLocalDataSourceImpl implements DetailsLocalDataSource {
       });
       return burningCalories;
     } catch (error) {
-
       throw DatabaseException;
     }
   }
@@ -205,11 +201,12 @@ class DetailsLocalDataSourceImpl implements DetailsLocalDataSource {
   Future<List<DailyCalories>> getDailyCaloriesData() async {
     try {
       List<Map<String, Object?>> data =
-          await database.rawQuery('select * from dailyCalories');
+          await database.rawQuery('select * from dailyCalories ORDER by date DESC');
       return data
           .map<DailyCaloriesModel>((e) => DailyCaloriesModel.fromJson(e))
           .toList();
     } catch (error) {
+      // print(error);
       throw DatabaseException;
     }
   }

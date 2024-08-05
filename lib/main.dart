@@ -22,7 +22,7 @@ import 'package:fitness_tracker2/features/Details/presentation/bloc/cubit.dart';
 import 'package:fitness_tracker2/features/Home/presentation/cubit/cubit.dart';
 import 'package:fitness_tracker2/features/Home/presentation/cubit/states.dart';
 import 'package:fitness_tracker2/features/Home/presentation/screens/home.dart';
-import 'package:fitness_tracker2/features/Home/presentation/screens/infoScreen.dart';
+import 'package:fitness_tracker2/features/Home/presentation/screens/info_screen.dart';
 import 'package:fitness_tracker2/features/Meals/data/data_sources/LocalDataSource/sqflite%20local%20data%20source.dart';
 import 'package:fitness_tracker2/features/Meals/data/repositories/repositoryImpl.dart';
 import 'package:fitness_tracker2/features/Meals/domain/repositories/repositories.dart';
@@ -32,9 +32,9 @@ import 'package:fitness_tracker2/features/Meals/domain/use_cases/getAllMeals.dar
 import 'package:fitness_tracker2/features/Meals/domain/use_cases/searchMeal.dart';
 import 'package:fitness_tracker2/features/Meals/domain/use_cases/updateMeal.dart';
 import 'package:fitness_tracker2/features/Meals/presentation/bloc/MealsCubit/MealsCubit.dart';
-import 'package:fitness_tracker2/global/globalMethods.dart';
+import 'package:fitness_tracker2/global/global_methods.dart';
 import 'package:fitness_tracker2/global/themes.dart';
-import 'package:fitness_tracker2/useCases.dart';
+import 'package:fitness_tracker2/use_cases.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -50,23 +50,23 @@ Future<void> main() async {
   bool isGettingInfo = CacheHelper.getData(key: 'personalInfo') != null;
   final bool? isDark = CacheHelper.getData(key: 'isDark');
   Bloc.observer = MyBlocObserver();
-  runApp(MyApp(
-    isPersonalInfo: isGettingInfo,
-    isDark: isDark,
-  ),);
+  runApp(
+    MyApp(
+      isPersonalInfo: isGettingInfo,
+      isDark: isDark,
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
   DetailsRepositories detailsRepository() =>
       DetailsRepoImpl(detailsLocalDataSource: DetailsLocalDataSourceImpl());
 
-  ActivityRepository activityRepository() =>
-      ActivityRepositoryImpl(
-          activityLocalDataSource: ActivityLocalDataSourceImpl());
+  ActivityRepository activityRepository() => ActivityRepositoryImpl(
+      activityLocalDataSource: ActivityLocalDataSourceImpl());
 
   MealsRepositories mealsRepositories() =>
       MealsRepoImpl(mealLocalDataSource: MealLocalDataSourceImpl());
-
 
   const MyApp({super.key, required this.isPersonalInfo, required this.isDark});
 
@@ -79,55 +79,39 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) =>
-          HomeCubit()
+          create: (context) => HomeCubit()
             ..changeDarkMode(fromShared: isDark)
             ..calculateMain(),
         ),
         BlocProvider(
-          create: (context) =>
-          MealsCubit(
-            useCases: mealsUseCases(),
-          )
-            ..getMeals(),
+          create: (context) => MealsCubit()..getMeals(),
         ),
         BlocProvider(
-          create: (context) =>
-          ActivitiesCubit(
-            useCases: activitiesUseCases(),
-          )
-            ..getAllActivities(),
+          create: (context) => ActivitiesCubit()..getActivities(),
         ),
         BlocProvider(
-          create: (context) =>
-          DetailsCubit(
-            useCases: detailsUseCases(),
-          )
-            ..getDetailsData(),
+          create: (context) => DetailsCubit()..getDetailsData(),
         ),
       ],
       child: BlocConsumer<HomeCubit, HomeStates>(
         listener: (context, state) {},
-        builder: (context, state) =>
-            MaterialApp(
-              themeMode:
-              HomeCubit
-                  .get(context)
-                  .isDark ? ThemeMode.dark : ThemeMode.light,
-              darkTheme: darkTheme,
-              theme: lightTheme,
-              locale: Locale(language),
-              localizationsDelegates: const [
-                S.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: S.delegate.supportedLocales,
-              debugShowCheckedModeBanner: false,
-              title: 'Flutter Demo',
-              home: !isPersonalInfo ? const InfoScreen() : const Home(),
-            ),
+        builder: (context, state) => MaterialApp(
+          themeMode:
+              HomeCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
+          darkTheme: darkTheme,
+          theme: lightTheme,
+          locale: Locale(language),
+          localizationsDelegates: const [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: S.delegate.supportedLocales,
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          home: !isPersonalInfo ? const InfoScreen() : const Home(),
+        ),
       ),
     );
   }

@@ -3,10 +3,10 @@ import '../../../../global/errors/failure.dart';
 import '../repositories/repositories.dart';
 
 class DeleteMealUseCase  {
-  MealsRepositories repositories;
-  DeleteMealUseCase({required this.repositories});
+  MealsRepositories repository;
+  DeleteMealUseCase({required this.repository});
 
   Future<Either<Failure,Unit>> call(id) async{
-    return await repositories.deleteMeal(id);
+    return await repository.deleteMeal(id);
   }
 }

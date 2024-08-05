@@ -2,12 +2,12 @@ import 'package:fitness_tracker2/features/Details/presentation/bloc/cubit.dart';
 import 'package:fitness_tracker2/features/Details/presentation/bloc/states.dart';
 import 'package:fitness_tracker2/features/Details/presentation/pages/statistics.dart';
 import 'package:fitness_tracker2/features/Details/presentation/widgets/DetailsListItem.dart';
-import 'package:fitness_tracker2/global/globalMethods.dart';
-import 'package:fitness_tracker2/global/widgets/defaultButton.dart';
+import 'package:fitness_tracker2/global/global_methods.dart';
+import 'package:fitness_tracker2/global/widgets/default_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../generated/l10n.dart';
-import '../../../../global/widgets/Toast.dart';
+import '../../../../global/widgets/show_toast.dart';
 
 class Details extends StatelessWidget {
   const Details({super.key});

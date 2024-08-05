@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'defaultButton.dart';
+import 'default_button.dart';
 
 void deleteDialog({required context,required String message,required void Function()? onPressed}){
   showDialog(context: context, builder: (context) => AlertDialog(

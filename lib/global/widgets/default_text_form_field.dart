@@ -51,7 +51,6 @@ class DefaultFormField extends StatelessWidget {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(
-              style: BorderStyle.solid,
               color: Colors.grey,
             ),
           ),

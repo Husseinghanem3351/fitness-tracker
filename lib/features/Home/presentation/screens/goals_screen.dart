@@ -1,5 +1,5 @@
 import 'package:fitness_tracker2/features/Home/presentation/cubit/cubit.dart';
-import 'package:fitness_tracker2/features/Home/presentation/widgets/RadioButtonList.dart';
+import 'package:fitness_tracker2/features/Home/presentation/widgets/radio_button_list.dart';
 import 'package:fitness_tracker2/generated/l10n.dart';
 import 'package:fitness_tracker2/global/global.dart';
 import 'package:flutter/material.dart';

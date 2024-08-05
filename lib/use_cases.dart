@@ -26,64 +26,79 @@ import 'package:fitness_tracker2/features/Meals/domain/use_cases/getAllMeals.dar
 import 'package:fitness_tracker2/features/Meals/domain/use_cases/searchMeal.dart';
 import 'package:fitness_tracker2/features/Meals/domain/use_cases/updateMeal.dart';
 
-Map<String, dynamic> detailsUseCases() {
-  DetailsRepositories detailsRepository =
+import 'features/Activities/domain/entities/activity.dart';
+import 'features/Details/domain/entities/burning.dart';
+import 'features/Details/domain/entities/eating.dart';
+import 'features/Meals/domain/entities/meal.dart';
+
+// define the use cases here call it in cubit
+
+class DetailsUseCases {
+  static DetailsRepositories detailsRepository =
       DetailsRepoImpl(detailsLocalDataSource: DetailsLocalDataSourceImpl());
-  MealsRepositories mealsRepository =
+  static MealsRepositories mealsRepository =
       MealsRepoImpl(mealLocalDataSource: MealLocalDataSourceImpl());
-  ActivityRepository activityRepository = ActivityRepositoryImpl(
+  static ActivityRepository activityRepository = ActivityRepositoryImpl(
       activityLocalDataSource: ActivityLocalDataSourceImpl());
-  return {
-    'getEatingCalories': GetAllEatingCalories(repositories: detailsRepository),
-    'getBurningCalories':
-        GetAllBurningCalories(repositories: detailsRepository),
-    'updateCalories': UpdateCaloriesUseCase(repositories: detailsRepository),
-    'getDailyCalories': GetDailyCaloriesUseCase(repository: detailsRepository),
-    'addEatingCalories':
-        AddEatingCaloriesUseCase(repository: detailsRepository),
-    'addBurningCalories':
-        AddBurningCaloriesUseCase(repository: detailsRepository),
-    'deleteBurningCalories':
-        DeleteBurningCalories(repository: detailsRepository),
-    'deleteEatingCalories': DeleteEatingCalories(repository: detailsRepository),
-  };
+
+  static getEatingCalorieUseCase() =>
+      GetEatingCaloriesUseCase(repository: detailsRepository)();
+
+ static getBurningCaloriesUseCase() =>
+      GetBurningCaloriesUseCase(repository: detailsRepository)();
+
+static  updateCalorieUseCase() =>
+      UpdateCaloriesUseCase(repository: detailsRepository)();
+
+ static getDailyCalorieUseCase() =>
+      GetDailyCaloriesUseCase(repository: detailsRepository)();
+
+  static addEatingCaloriesUseCase(Eating eating) =>
+      AddEatingCaloriesUseCase(repository: detailsRepository)(eating);
+
+  static addBurningCaloriesUseCase(Burning burning) =>
+      AddBurningCaloriesUseCase(repository: detailsRepository)(burning);
+
+  static deleteBurningCaloriesUseCase(int id) =>
+      DeleteBurningCaloriesUseCase(repository: detailsRepository)(id);
+
+  static deleteEatingCalorieUseCse(int id) =>
+      DeleteEatingCaloriesUseCase(repository: detailsRepository)(id);
 }
 
-Map<String, dynamic> activitiesUseCases() {
-  ActivityRepository activityRepository = ActivityRepositoryImpl(
+class ActivitiesUseCases {
+  static ActivityRepository activityRepository = ActivityRepositoryImpl(
       activityLocalDataSource: ActivityLocalDataSourceImpl());
-  return {
-    'editActivity': EditActivityUseCase(repository: activityRepository),
-    'deleteActivity': DeleteActivityUseCase(repository: activityRepository),
-    'addActivity': AddActivityUseCase(repository: activityRepository),
-    'searchActivity':
-        SearchActivityUseCase(activityRepository: activityRepository),
-    'getActivities': GetActivitiesUseCase(repository: activityRepository),
-  };
+
+  static editActivityUseCase(Activity activity) =>
+      EditActivityUseCase(repository: activityRepository)(activity);
+
+  static addActivityUseCase(Activity activity) =>
+      AddActivityUseCase(repository: activityRepository)(activity);
+
+  static deleteActivityUseCase(int id) =>
+      DeleteActivityUseCase(repository: activityRepository)(id);
+
+  static searchActivityUseCase(String name) =>
+      SearchActivityUseCase(repository: activityRepository)(name);
+
+  static getActivityUseCase() =>
+      GetActivitiesUseCase(repository: activityRepository)();
 }
 
-Map<String, dynamic> mealsUseCases() {
-  MealsRepositories mealsRepositories =
+class MealsUseCases {
+  static MealsRepositories mealsRepositories =
       MealsRepoImpl(mealLocalDataSource: MealLocalDataSourceImpl());
-  return {
-    'addMeal': AddMealUseCase(
-      repository: mealsRepositories,
-    ),
-    'deleteMeal': DeleteMealUseCase(
-      repositories: mealsRepositories,
-    ),
-    'searchMeal': SearchMealUseCase(
-      repositories: mealsRepositories,
-    ),
-    'getMeals': GetAllMealsUseCase(
-      repositories: mealsRepositories,
-    ),
-    'updateMeal': UpdateMealUseCase(
-      repositories: mealsRepositories,
-    ),
-  };
-}
 
-class MealsUseCases{
+  static addMealUseCase(Meal meal) => AddMealUseCase(repository: mealsRepositories)(meal);
 
+  static deleteMealUseCase(int id) =>
+      DeleteMealUseCase(repository: mealsRepositories)(id);
+
+  static searchMealUseCase(String name) => SearchMealUseCase(repository: mealsRepositories)(name);
+
+  static getMealsUseCase() => GetAllMealsUseCase(repository: mealsRepositories)();
+
+  static updateMealUseCase(Meal meal) =>
+      UpdateMealUseCase(repository: mealsRepositories)(meal);
 }

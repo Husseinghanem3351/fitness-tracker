@@ -4,10 +4,10 @@ import '../../entities/activity.dart';
 import '../../repositories/ActivityRepository.dart';
 
 class SearchActivityUseCase {
-  ActivityRepository activityRepository;
-  SearchActivityUseCase({required this.activityRepository});
+  ActivityRepository repository;
+  SearchActivityUseCase({required this.repository});
 
   Future<Either<Failure,List<Activity>>>call(String name) async {
-   return await activityRepository.searchActivities(name);
+   return await repository.searchActivities(name);
   }
 }

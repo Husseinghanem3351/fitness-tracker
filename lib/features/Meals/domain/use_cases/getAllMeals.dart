@@ -4,10 +4,10 @@ import '../entities/meal.dart';
 import '../repositories/repositories.dart';
 
 class GetAllMealsUseCase {
-  MealsRepositories repositories;
-  GetAllMealsUseCase({required this.repositories});
+  MealsRepositories repository;
+  GetAllMealsUseCase({required this.repository});
 
   Future<Either<Failure,(List<Meal>,List<Meal>)>> call()async{
-    return await repositories.getAllMeals();
+    return await repository.getAllMeals();
   }
 }

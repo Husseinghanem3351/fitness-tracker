@@ -3,10 +3,10 @@ import '../../../../global/errors/failure.dart';
 import '../repositories/repositories.dart';
 
 class UpdateCaloriesUseCase {
-  DetailsRepositories repositories;
-  UpdateCaloriesUseCase({required this.repositories});
+  DetailsRepositories repository;
+  UpdateCaloriesUseCase({required this.repository});
 
   Future<Either<Failure, Unit>> call() async {
-    return await repositories.updateCalories();
+    return await repository.updateCalories();
   }
 }

@@ -4,6 +4,7 @@ import 'package:fitness_tracker2/features/Meals/domain/use_cases/deleteMeal.dart
 import 'package:fitness_tracker2/features/Meals/domain/use_cases/getAllMeals.dart';
 import 'package:fitness_tracker2/features/Meals/domain/use_cases/searchMeal.dart';
 import 'package:fitness_tracker2/features/Meals/domain/use_cases/updateMeal.dart';
+import 'package:fitness_tracker2/use_cases.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dartz/dartz.dart';
 
@@ -12,11 +13,8 @@ import '../../../../../global/strings/failures.dart';
 import 'MealsStates.dart';
 
 class MealsCubit extends Cubit<MealsStates> {
-  MealsCubit({
-    required this.useCases,
-  }) : super(InitMealsState());
+  MealsCubit() : super(InitMealsState());
 
-  final Map<String,dynamic> useCases;
 
   static MealsCubit get(context) => BlocProvider.of(context);
 
@@ -25,18 +23,18 @@ class MealsCubit extends Cubit<MealsStates> {
 
   Future<void> searchMeal(String name) async {
     emit(GetMealsLoadingState());
-    final failureOrSearch = await useCases['searchMeal'](name);
+    final failureOrSearch = await MealsUseCases.searchMealUseCase(name);
     emit(await mapFailureOrSuccess(either: failureOrSearch, state: 'get'));
   }
 
   Future<void> getMeals() async {
     emit(GetMealsLoadingState());
-    final failureOrGet = await useCases['getMeals']();
+    final failureOrGet = await MealsUseCases.getMealsUseCase();
     emit(await mapFailureOrSuccess(either: failureOrGet, state: 'get'));
   }
 
   Future<void> editMeal(Meal meal) async {
-    final failureOrEdit = await useCases['updateMeal'](meal);
+    final failureOrEdit = await MealsUseCases.updateMealUseCase(meal);
     emit(
       await mapFailureOrSuccess(
         either: failureOrEdit,
@@ -46,7 +44,7 @@ class MealsCubit extends Cubit<MealsStates> {
   }
 
   Future<void> deleteMeal(int id) async {
-    final failureOrDelete = await useCases['deleteMeal'](id);
+    final failureOrDelete = await MealsUseCases.deleteMealUseCase(id);
     emit(
       await mapFailureOrSuccess(
         either: failureOrDelete,
@@ -56,7 +54,7 @@ class MealsCubit extends Cubit<MealsStates> {
   }
 
   Future<void> addMeal(Meal meal) async {
-    final failureOrAdd = await useCases['addMeal'](meal);
+    final failureOrAdd = await MealsUseCases.addMealUseCase(meal);
     emit(
       await mapFailureOrSuccess(
         either: failureOrAdd,

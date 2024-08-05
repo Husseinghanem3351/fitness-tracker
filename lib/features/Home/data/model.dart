@@ -3,7 +3,6 @@ class PersonalInfoModel {
   final double weight;
   final double age;
   final String gender;
-  final double waterGoal;
   final String name;
 
   PersonalInfoModel({
@@ -11,7 +10,6 @@ class PersonalInfoModel {
     required this.weight,
     required this.age,
     required this.gender,
-    required this.waterGoal,
     required this.name
   });
 
@@ -21,7 +19,6 @@ class PersonalInfoModel {
       'weight': weight,
       'age': age,
       'gender': gender,
-      'waterGoal': waterGoal,
       'name':name,
     };
   }
@@ -32,7 +29,6 @@ class PersonalInfoModel {
       weight: json['weight'],
       age: json['age'],
       gender: json['gender'],
-      waterGoal: json['waterGoal'],
       name:json['name']
     );
   }

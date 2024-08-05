@@ -14,8 +14,8 @@ class Eating {
   final String? mealName;
   final double? quantity;
   final DateTime? date;
-  final int? carb;
-  final int? fat;
-  final int? protein;
-  final int? calories;
+  final double? carb;
+  final double? fat;
+  final double? protein;
+  final double? calories;
 }

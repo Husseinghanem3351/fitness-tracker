@@ -1,8 +1,6 @@
-import 'package:fitness_tracker2/features/Home/presentation/cubit/cubit.dart';
-import 'package:fitness_tracker2/features/Home/presentation/widgets/showElementQuantity.dart';
+import 'package:fitness_tracker2/features/Home/presentation/widgets/show_element_quantity.dart';
 import 'package:fitness_tracker2/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
 import '../../../../global/global.dart';
 
 class DetailsWidget extends StatelessWidget {
@@ -18,7 +16,11 @@ class DetailsWidget extends StatelessWidget {
       decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-                offset: const Offset(1, 1), color: Colors.grey.withOpacity(.1))
+              offset: const Offset(1, 1),
+              color: Colors.grey.withOpacity(
+                .1,
+              ),
+            ),
           ],
           color: Theme.of(context).colorScheme.secondary,
           borderRadius: const BorderRadius.only(
@@ -100,17 +102,17 @@ class DetailsWidget extends StatelessWidget {
                 ElementQuantity(
                   quantity: globalFat,
                   name: S.of(context).fat,
-                  goal: 50,
+                  goal: requiredFat,
                 ),
                 ElementQuantity(
                   quantity: globalProtein,
                   name: S.of(context).protein,
-                  goal: 50,
+                  goal: requiredProtein,
                 ),
                 ElementQuantity(
                   quantity: globalCarb,
                   name: S.of(context).carb,
-                  goal: 50,
+                  goal: requiredCarb,
                 ),
               ],
             ),

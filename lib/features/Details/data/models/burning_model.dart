@@ -11,12 +11,13 @@ class BurningCaloriesModel extends Burning {
   });
 
   factory BurningCaloriesModel.fromJson(Map<String, dynamic> json) {
+    print(json);
     return BurningCaloriesModel(
-      activityName: json['name'],
-      calories: json['calories'].toInt(),
+      activityName: json['name'].toString(),
+      calories: double.parse(json['calories']).toDouble(),
       date: DateTime.parse(json['date']),
-      id: json['id'],
-      duration: json['duration'],
+      id: int.parse(json['id']),
+      duration: double.parse(json['duration']).toDouble(),
     );
   }
 

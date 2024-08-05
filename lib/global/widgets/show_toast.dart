@@ -23,7 +23,7 @@ void showToast({
       ),
     ),
     duration: const Duration(
-      seconds: 5,
+      seconds: 3,
     ),
     backgroundColor: color,
   );

@@ -1,20 +1,20 @@
 import 'package:fitness_tracker2/features/Details/presentation/bloc/cubit.dart';
 import 'package:fitness_tracker2/features/Details/presentation/bloc/states.dart';
-import 'package:fitness_tracker2/features/Home/presentation/screens/infoScreen.dart';
-import 'package:fitness_tracker2/features/Home/presentation/widgets/detailsWidget.dart';
+import 'package:fitness_tracker2/features/Home/presentation/screens/info_screen.dart';
+import 'package:fitness_tracker2/features/Home/presentation/widgets/details_widget.dart';
 import 'package:fitness_tracker2/features/Home/presentation/widgets/gradiant.dart';
-import 'package:fitness_tracker2/features/Home/presentation/widgets/waterTracker.dart';
+import 'package:fitness_tracker2/features/Home/presentation/widgets/water_tracker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../global/global.dart';
-import '../../../../global/globalMethods.dart';
+import '../../../../global/global_methods.dart';
 import '../../../Details/presentation/pages/details.dart';
 import '../cubit/cubit.dart';
 import '../cubit/states.dart';
-import '../widgets/floatingActionButton.dart';
+import '../widgets/floating_action_button.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -46,7 +46,7 @@ class Home extends StatelessWidget {
             bool showAddButton = HomeCubit
                 .get(context)
                 .showAddButton;
-            if (remainingCalories == 0) {
+            if (state is CalculateBmrLoading) {
               return const Center(child: CircularProgressIndicator());
             }
             return !showAddButton

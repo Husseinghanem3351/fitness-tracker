@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-
 import 'package:sqflite/sqflite.dart';
 import '../../../../../global/database.dart';
 import '../../domain/entities/activity.dart';

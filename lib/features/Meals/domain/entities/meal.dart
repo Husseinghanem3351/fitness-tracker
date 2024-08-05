@@ -11,11 +11,11 @@ class Meal {
   });
 
   final int? id;
-  final int calories;
+  final double calories;
   final String name;
   final String? defaultValueName;
-  final int protein;
-  final int carb;
-  final int fat;
-  final int? defaultValue;
+  final double protein;
+  final double carb;
+  final double fat;
+  final double? defaultValue;
 }

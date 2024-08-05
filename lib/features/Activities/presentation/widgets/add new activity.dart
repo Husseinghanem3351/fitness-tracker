@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../../generated/l10n.dart';
-import '../../../../global/globalMethods.dart';
-import '../../../../global/widgets/defaultButton.dart';
-import '../../../../global/widgets/defaultTextFormField.dart';
+import '../../../../global/global_methods.dart';
+import '../../../../global/widgets/default_button.dart';
+import '../../../../global/widgets/default_text_form_field.dart';
 import '../../domain/entities/activity.dart';
 import '../bloc/ActivitiesBloc/cubit.dart';
 

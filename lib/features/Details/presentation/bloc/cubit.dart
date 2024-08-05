@@ -1,31 +1,20 @@
-import 'package:fitness_tracker2/features/Details/data/data_sources/LocalDataSource/sqflite%20local%20data%20source.dart';
-import 'package:fitness_tracker2/features/Details/data/repositories/repositoryImpl.dart';
 import 'package:fitness_tracker2/features/Details/domain/entities/burning.dart';
 import 'package:fitness_tracker2/features/Details/domain/entities/dailyCalories.dart';
 import 'package:fitness_tracker2/features/Details/domain/entities/eating.dart';
-import 'package:fitness_tracker2/features/Details/domain/use_cases/GetDaliyCalories.dart';
-import 'package:fitness_tracker2/features/Details/domain/use_cases/UpdateCaloriesUseCase.dart';
-import 'package:fitness_tracker2/features/Details/domain/use_cases/addEatngCaloriesUseCase.dart';
-import 'package:fitness_tracker2/features/Details/domain/use_cases/deleteBurningUseCase.dart';
-import 'package:fitness_tracker2/features/Details/domain/use_cases/getEatingCaloriesUseCase.dart';
 import 'package:fitness_tracker2/features/Details/presentation/bloc/states.dart';
 import 'package:fitness_tracker2/global/global.dart';
+import 'package:fitness_tracker2/use_cases.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dartz/dartz.dart';
 import '../../../../global/errors/failure.dart';
 import '../../../../global/strings/failures.dart';
+import '../../../Home/data/cache helper.dart';
 import '../../data/models/Calories_inModel.dart';
-import '../../domain/use_cases/addBurningCaloriesUseCase.dart';
-import '../../domain/use_cases/deleteEatingCaloriesUseCase.dart';
-import '../../domain/use_cases/getBurningCaloriesUseCase.dart';
 
 class DetailsCubit extends Cubit<DetailsStates> {
-  DetailsCubit({
-    required this.useCases,
-  }) : super(InitDetailsState());
+  DetailsCubit() : super(InitDetailsState());
 
   static DetailsCubit get(context) => BlocProvider.of(context);
-  Map<String,dynamic>useCases ;
 
   //
   // GetAllEatingCalories getAllEatingCalories = GetAllEatingCalories(
@@ -76,17 +65,19 @@ class DetailsCubit extends Cubit<DetailsStates> {
 
   Future<void> getDetailsData() async {
     emit(LoadingGetDetailsState());
-    final failureOrEatingCalories = await useCases['getEatingCalories']();
-    final failureOrBurningCalories = await useCases['getBurningCalories']();
+    final failureOrEatingCalories =
+        await DetailsUseCases.getEatingCalorieUseCase();
+    final failureOrBurningCalories =
+        await DetailsUseCases.getBurningCaloriesUseCase();
     emit(await mapResultGetToState(
         failureOrEatingCalories, failureOrBurningCalories));
-    useCases['updateCalories']().then((value) {
+    DetailsUseCases.updateCalorieUseCase().then((value) {
       calculateDetailsCalories();
       emit(UpdateCaloriesSuccessState());
     }).catchError((error) {});
   }
 
-  void calculateDetailsCalories() {
+  Future<void> calculateDetailsCalories() async {
     remainingCalories = remainingCalories - burningCalories + eatingCalories;
     globalCarb = 0;
     globalProtein = 0;
@@ -105,6 +96,33 @@ class DetailsCubit extends Cubit<DetailsStates> {
         } else {
           remainingCalories += details[i].calories;
           burningCalories += details[i].calories;
+          String goal = await CacheHelper.getData(key: 'goal');
+          switch (goal) {
+            case 'lose weight' || 'خسارة وزن':
+              {
+                requiredProtein = (.3 * remainingCalories) / 4;
+                requiredFat = (.25 * remainingCalories) / 9;
+                requiredCarb = (.45 * remainingCalories) / 4;
+              }
+            case 'gain weight' || 'زيادة وزن':
+              {
+                requiredProtein = (.25 * remainingCalories) / 4;
+                requiredFat = (.25 * remainingCalories) / 9;
+                requiredCarb = (.5 * remainingCalories) / 4;
+              }
+            case 'build muscle' || 'بناء عضلات':
+              {
+                requiredProtein = (.25 * remainingCalories) / 4;
+                requiredFat = (.25 * remainingCalories) / 9;
+                requiredCarb = (.5 * remainingCalories) / 4;
+              }
+            default:
+              {
+                requiredProtein = (.2 * remainingCalories) / 4;
+                requiredFat = (.3 * remainingCalories) / 9;
+                requiredCarb = (.5 * remainingCalories) / 4;
+              }
+          }
         }
       }
       i++;
@@ -114,7 +132,7 @@ class DetailsCubit extends Cubit<DetailsStates> {
   Future<void> getDailyCaloriesData() async {
     // get details for each day, for statistics
     emit(LoadingGetDailyCaloriesState());
-    useCases['getDailyCalories']().then((value) {
+    DetailsUseCases.getDailyCalorieUseCase().then((value) {
       value.fold((failure) {
         emit(ErrorGetDailyCaloriesState(
             error: mapFailureToMessage(
@@ -128,22 +146,25 @@ class DetailsCubit extends Cubit<DetailsStates> {
   }
 
   Future<void> addToEatingCalories(Eating eatingElement) async {
-    final addOrFailure = await useCases['addEatingCalories'](eatingElement);
+    final addOrFailure =
+        await DetailsUseCases.addEatingCaloriesUseCase(eatingElement);
     emit(await mapResultToState(either: addOrFailure, state: 'add'));
   }
 
   Future<void> addToBurningCalories(Burning burningElement) async {
-    final addOrFailure = await useCases['addBurningCalories'](burningElement);
+    final addOrFailure =
+        await DetailsUseCases.addBurningCaloriesUseCase(burningElement);
     emit(await mapResultToState(either: addOrFailure, state: 'add'));
   }
 
   Future<void> deleteBurningCalories(int id) async {
-    final deleteOrFailure = await useCases['deleteBurningCalories'](id);
+    final deleteOrFailure =
+        await DetailsUseCases.deleteBurningCaloriesUseCase(id);
     emit(await mapResultToState(either: deleteOrFailure, state: 'delete'));
   }
 
   Future<void> deleteEatingCalories(int id) async {
-    final deleteOrFailure = await useCases['deleteEatingCalories'](id);
+    final deleteOrFailure = await DetailsUseCases.deleteEatingCalorieUseCse(id);
     emit(await mapResultToState(either: deleteOrFailure, state: 'delete'));
   }
 
@@ -156,16 +177,19 @@ class DetailsCubit extends Cubit<DetailsStates> {
         return ErrorGetDetailsState(error: 'get eating error');
       },
       (eating) {
-        return eitherBurning.fold((failure) {
-          return ErrorGetDetailsState(error: 'get burning error');
-        }, (burning) {
-          return SuccessGetDetailsState(
-            detailsList: sortTwoList(
-              eating,
-              burning,
-            ),
-          );
-        });
+        return eitherBurning.fold(
+          (failure) {
+            return ErrorGetDetailsState(error: 'get burning error');
+          },
+          (burning) {
+            return SuccessGetDetailsState(
+              detailsList: sortTwoList(
+                eating,
+                burning,
+              ),
+            );
+          },
+        );
       },
     );
   }

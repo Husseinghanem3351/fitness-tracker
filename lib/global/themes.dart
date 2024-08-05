@@ -15,6 +15,7 @@ var lightTheme = ThemeData(
   inputDecorationTheme: InputDecorationTheme(
     labelStyle: TextStyle(
       color: Colors.grey[500],
+      fontSize: 15,
     ),
     hintStyle: TextStyle(color: Colors.grey[500], fontSize: 15),
     enabledBorder: OutlineInputBorder(
@@ -51,7 +52,7 @@ var darkTheme = ThemeData(
     seedColor: Colors.blueGrey,
     brightness: Brightness.dark,
     primary: HexColor('#475368'),
-    secondary: HexColor('#1b1e20'),
+    secondary: HexColor('#222424'),
   ),
   appBarTheme: AppBarTheme(
     color: HexColor('#1b1b1d'),
@@ -59,18 +60,17 @@ var darkTheme = ThemeData(
   inputDecorationTheme: InputDecorationTheme(
     labelStyle: TextStyle(
       color: Colors.grey[300],
+      fontSize: 15,
     ),
-    hintStyle: TextStyle(
-      color: Colors.grey[300],
-    ),
+    hintStyle: TextStyle(color: Colors.grey[300], fontSize: 15),
     prefixIconColor: Colors.grey,
     suffixIconColor: Colors.grey,
     enabledBorder: const OutlineInputBorder(
-      borderSide: BorderSide(style: BorderStyle.solid, color: Colors.grey),
+      borderSide: BorderSide(color: Colors.grey),
     ),
     iconColor: Colors.white,
   ),
-  scaffoldBackgroundColor: HexColor('#0e1111'),
+  scaffoldBackgroundColor: HexColor('#1b1c1c'),
   // primarySwatch: Colors.grey,
   textTheme: const TextTheme(
     labelMedium: TextStyle(

@@ -1,7 +1,7 @@
 class Burning {
   final double? duration;
   final String? activityName;
-  final int? calories;
+  final double? calories;
   final int? id;
   final DateTime? date;
 

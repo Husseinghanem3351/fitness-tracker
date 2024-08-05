@@ -6,8 +6,8 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import '../../../../generated/l10n.dart';
-import '../../../../global/widgets/defaultButton.dart';
-import '../../../../global/widgets/delete dialog.dart';
+import '../../../../global/widgets/default_button.dart';
+import '../../../../global/widgets/delete_dialog.dart';
 import '../../../Home/presentation/cubit/cubit.dart';
 import '../../domain/entities/meal.dart';
 import '../bloc/MealsCubit/MealsCubit.dart';
@@ -49,7 +49,7 @@ class MealElement extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      '${meal.calories.toString()} ',
+                      '${meal.calories.ceilToDouble().toString()} ',
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                     const SizedBox(width: 10,),
@@ -70,17 +70,17 @@ class MealElement extends StatelessWidget {
               elementQuantity(
                 context: context,
                 elementName: S.of(context).fat,
-                quantity: meal.fat,
+                quantity: meal.fat.ceilToDouble(),
               ),
               elementQuantity(
                 context: context,
                 elementName: S.of(context).protein,
-                quantity: meal.protein,
+                quantity: meal.protein.ceilToDouble(),
               ),
               elementQuantity(
                 context: context,
                 elementName: S.of(context).carb,
-                quantity: meal.carb,
+                quantity: meal.carb.ceilToDouble(),
               ),
             ],
           ),
@@ -108,7 +108,7 @@ class MealElement extends StatelessWidget {
 
   Widget elementQuantity({
     required String elementName,
-    required int quantity,
+    required double quantity,
     required BuildContext context,
   }) =>
       Column(

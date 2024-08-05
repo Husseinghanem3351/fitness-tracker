@@ -1,13 +1,13 @@
-import 'package:fitness_tracker2/features/Home/presentation/widgets/selectGender.dart';
+import 'package:fitness_tracker2/features/Home/presentation/widgets/select_gender.dart';
 import 'package:fitness_tracker2/generated/l10n.dart';
-import 'package:fitness_tracker2/global/globalMethods.dart';
-import 'package:fitness_tracker2/global/globalMethods.dart';
-import 'package:fitness_tracker2/global/globalMethods.dart';
-import 'package:fitness_tracker2/global/globalMethods.dart';
-import 'package:fitness_tracker2/global/widgets/defaultTextFormField.dart';
+import 'package:fitness_tracker2/global/global_methods.dart';
+import 'package:fitness_tracker2/global/global_methods.dart';
+import 'package:fitness_tracker2/global/global_methods.dart';
+import 'package:fitness_tracker2/global/global_methods.dart';
+import 'package:fitness_tracker2/global/widgets/default_text_form_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'infoScreen.dart';
+import 'info_screen.dart';
 
 class PersonalInfo extends StatefulWidget {
   const PersonalInfo({
@@ -62,7 +62,7 @@ Widget body({
             height: 10,
           ),
           DefaultFormField(
-            hintText: S.of(context).name,
+            labelText: S.of(context).name,
             controller: nameController,
             validator: (value) => validatorMethod(value, context),
             textInputType: TextInputType.text,
@@ -70,7 +70,7 @@ Widget body({
           ),
           DefaultFormField(
             textInputAction: TextInputAction.next,
-            hintText: S.of(context).age,
+            labelText: S.of(context).age,
             controller: ageController,
             validator: (value) => validatorMethod(value, context),
             textInputType: TextInputType.number,
@@ -78,13 +78,13 @@ Widget body({
           DefaultFormField(
             textInputAction: TextInputAction.next,
             controller: weightController,
-            hintText: S.of(context).weight,
+            labelText: S.of(context).weight,
             validator: (value) => validatorMethod(value, context),
             textInputType: TextInputType.number,
           ),
           DefaultFormField(
             controller: heightController,
-            hintText: S.of(context).height,
+            labelText: S.of(context).height,
             validator: (value) => validatorMethod(value, context),
             textInputType: TextInputType.number,
             onFieldSubmitted: (_) => FocusScope.of(context).unfocus(),

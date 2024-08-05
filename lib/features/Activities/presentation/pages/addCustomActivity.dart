@@ -1,12 +1,12 @@
 // import 'package:fitness_tracker2/features/Activities/domain/entities/activity.dart';
 // import 'package:fitness_tracker2/features/Activities/presentation/bloc/ActivitiesBloc/states.dart';
 // import 'package:fitness_tracker2/features/Activities/presentation/widgets/ActivityElement.dart';
-// import 'package:fitness_tracker2/global/widgets/defaultButton.dart';
+// import 'package:fitness_tracker2/global/widgets/default_button.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:flutter/material.dart';
 //
-// import '../../../../global/widgets/Toast.dart';
-// import '../../../../global/widgets/defaultTextFormField.dart';
+// import '../../../../global/widgets/show_toast.dart';
+// import '../../../../global/widgets/default_text_form_field.dart';
 // import '../bloc/ActivitiesBloc/cubit.dart';
 // import '../widgets/CheckBoxTile.dart';
 // import '../widgets/add new activity.dart';

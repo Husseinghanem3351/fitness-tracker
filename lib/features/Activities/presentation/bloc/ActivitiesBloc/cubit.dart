@@ -1,22 +1,15 @@
 import 'package:fitness_tracker2/features/Activities/presentation/bloc/ActivitiesBloc/states.dart';
+import 'package:fitness_tracker2/use_cases.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bloc/bloc.dart';
 import '../../../../../global/errors/failure.dart';
 import '../../../../../global/strings/failures.dart';
 import 'package:dartz/dartz.dart';
 import '../../../domain/entities/activity.dart';
-import '../../../domain/use_cases/activityUseCase/addActivity.dart';
-import '../../../domain/use_cases/activityUseCase/deleteActivity.dart';
-import '../../../domain/use_cases/activityUseCase/editActivity.dart';
-import '../../../domain/use_cases/activityUseCase/getActivityies.dart';
-import '../../../domain/use_cases/activityUseCase/searchActivity.dart';
 
 class ActivitiesCubit extends Cubit<ActivitiesStates> {
-  ActivitiesCubit({
-    required this.useCases,
-  }) : super(InitActivitiesState());
+  ActivitiesCubit() : super(InitActivitiesState());
 
-  final Map<String,dynamic> useCases;
 
   static ActivitiesCubit get(context) => BlocProvider.of(context);
 
@@ -24,31 +17,31 @@ class ActivitiesCubit extends Cubit<ActivitiesStates> {
   List<Activity> activities = [];
 
   Future<void> editActivity(Activity activity) async {
-    final failureOrEdit = await useCases['editActivity'](activity);
+    final failureOrEdit = await ActivitiesUseCases.editActivityUseCase(activity);
     emit(await mapFailureOrActivitiesToState(failureOrEdit, state: 'edit'));
   }
 
   Future<void> deleteActivity(
     int id,
   ) async {
-    final failureOrDelete = await useCases['deleteActivity'](id);
+    final failureOrDelete = await ActivitiesUseCases.deleteActivityUseCase(id);
     emit(await mapFailureOrActivitiesToState(failureOrDelete, state: 'delete'));
   }
 
   Future<void> addActivity(Activity activity) async {
-    final failureOrAdd = await useCases['addActivity'](activity);
+    final failureOrAdd = await ActivitiesUseCases.addActivityUseCase(activity);
     emit(await mapFailureOrActivitiesToState(failureOrAdd, state: 'add'));
   }
 
-  Future<void> getAllActivities() async {
+  Future<void> getActivities() async {
     emit(LoadingGetActivitiesState());
-    final failureOrGet = await useCases['getActivities']();
+    final failureOrGet = await ActivitiesUseCases.getActivityUseCase();
     emit(await mapFailureOrActivitiesToState(failureOrGet, state: 'get'));
   }
 
-  Future<void> searchMeal(String name) async {
+  Future<void> searchActivity(String name) async {
     emit(LoadingGetActivitiesState());
-    final failureOrSearch = await useCases['searchActivity'](name);
+    final failureOrSearch = await ActivitiesUseCases.searchActivityUseCase(name);
     emit(await mapFailureOrActivitiesToState(failureOrSearch, state: 'get'));
   }
 
@@ -84,18 +77,18 @@ class ActivitiesCubit extends Cubit<ActivitiesStates> {
         switch (state) {
           case 'delete':
             {
-              await getAllActivities();
+              await getActivities();
               return SuccessDeleteActivityState(
                   message: 'delete activity succeed');
             }
           case 'edit':
             {
-              await getAllActivities();
+              await getActivities();
               return SuccessEditActivityState(message: 'edit activity succeed');
             }
           case 'add':
             {
-              await getAllActivities();
+              await getActivities();
               return SuccessAddActivityState(message: 'add activity succeed');
             }
           default:

@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'package:fitness_tracker2/features/Meals/data/models/meal.dart';
-import 'package:fitness_tracker2/features/Meals/domain/entities/meal.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 import '../features/Activities/data/models/ActivityModel.dart';
@@ -46,20 +44,37 @@ Future<Unit> createDatabase() async {
         version,
       ) {
         database.execute(
-          'create table if not exists meals(id integer primary key, name text,calories integer,protein integer,carb integer,fat integer)',
+          'drop table if  exists eating',
         );
         database.execute(
-          'create table if not exists eating(id integer primary key, name text,quantity Real,calories integer,date text,fat integer,carb integer, protein integer)',
+          'create table if not exists eating(id integer primary key, name text,quantity Real,calories double,date text,fat double,carb double, protein double)',
         );
         database.execute(
-          'create table if not exists burning(id integer primary key, date text,name text,calories integer,duration Real )',
+          'drop table if  exists burning',
         );
         database.execute(
-          'create table if not exists basicMeals(id integer primary key, name text,calories integer,protein integer,carb integer,fat integer,defaultQuantity integer,nameDefaultQuantity text)',
+          'create table if not exists burning(id integer primary key, date text,name text,calories double,duration Real )',
         );
-
+        database.execute(
+          'drop table if  exists basicMeals',
+        );
+        database.execute(
+          'create table if not exists basicMeals(id integer primary key, name text,calories double,protein double,carb double,fat double,defaultQuantity double,nameDefaultQuantity text)',
+        );
+        database.execute(
+          'drop table if  exists meals',
+        );
+        database.execute(
+          'create table if not exists meals(id integer primary key, name text,calories double,protein double,carb double,fat double)',
+        );
+        database.execute(
+          'drop table if  exists activities',
+        );
         database.execute(
           'create table if not exists activities(id integer primary key, name text,title text, MES Real)',
+        );
+        database.execute(
+          'drop table if  exists dailyCalories',
         );
         database.execute(
           'create table if not exists dailyCalories(id integer primary key, eatingCal Real,burnedCal Real, goalCalories Real,date text,fat Real,protein Real,carb Real)',
@@ -71,28 +86,39 @@ Future<Unit> createDatabase() async {
         });
       },
       onOpen: (database) async {
-        database.execute('drop table if exists basicMeals');
-        database.execute(
-          'create table if not exists meals(id integer primary key, name text,calories integer,protein integer,carb integer,fat integer)',
-        );
-        database.execute(
-          'create table if not exists basicMeals(id integer primary key, name text,calories integer,protein integer,carb integer,fat integer,defaultQuantity integer,nameDefaultQuantity text)',
-        );
-
-
-        List<MealModel> basicMeals=[
-          MealModel(
-            carb: 35,
-            fat: 10,
-            protein: 8,
-            name: 'rice',
-            calories: 200,
-          ),
-        ];
-        basicMeals.forEach((element) {database.insert(
-            'basicMeals',element.toJson()); });
-
-
+        // database.execute(
+        //   'drop table if  exists burning',
+        // );
+        // database.execute(
+        //   'create table if not exists burning(id integer primary key, date text,name text,calories double,duration Real )',
+        // );
+        // List<MealModel> basicMeals=[
+        //   const MealModel(
+        //     carb: 28.5,
+        //     fat: 0,
+        //     protein: 2.5,
+        //     name: 'boiled rice',
+        //     calories: 130,
+        //   ),
+        //   const MealModel(
+        //     carb: 21.4,
+        //     fat: 0,
+        //     protein: 2.3,
+        //     name: 'boiled potato',
+        //     calories: 87,
+        //   ),
+        //   const MealModel(
+        //     carb: 0,
+        //     fat: 3,
+        //     protein: 31,
+        //     name: 'boiled breast chicken',
+        //     calories: 165,
+        //   ),
+        // ];
+      //   basicMeals.forEach((element) {database.insert(
+      //       'basicMeals',element.toJson()); });
+      //   activitiesWithMETS.forEach((key, value) => database.insert(
+      //             'activities',ActivityModel(MES:value,name: key.$2,title: key.$1).toJson()));
       },
     );
   } catch (error) {
@@ -1096,6 +1122,7 @@ Map<(String, String), double> activitiesWithMETS = {
   ("	running	", "	Running, 4 mph (13 min/mile)	"): 6,
   ("	running	", "	running, 14 mph (4.3 min/mile)	"): 23,
 };
+
 Map<(String, String), double> map = {
   ("	running	", "	running, 13 mph (4.6 min/mile)	"): 19.8,
   ("	running	", "	running, 12 mph (5 min/mile)	"): 19,

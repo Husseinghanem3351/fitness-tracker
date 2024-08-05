@@ -3,9 +3,9 @@ import 'package:dartz/dartz.dart';
 import '../../../../global/errors/failure.dart';
 import '../repositories/repositories.dart';
 class UpdateMealUseCase{
-  MealsRepositories repositories;
-  UpdateMealUseCase({required this.repositories});
+  MealsRepositories repository;
+  UpdateMealUseCase({required this.repository});
   Future<Either<Failure,Unit>> call(meal) async{
-    return await repositories.updateMeal(meal);
+    return await repository.updateMeal(meal);
   }
 }

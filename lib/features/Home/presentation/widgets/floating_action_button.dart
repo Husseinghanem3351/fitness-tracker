@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../generated/l10n.dart';
-import '../../../../global/globalMethods.dart';
-import '../../../../global/widgets/defaultButton.dart';
+import '../../../../global/global_methods.dart';
+import '../../../../global/widgets/default_button.dart';
 import '../../../Activities/presentation/pages/ActivitiesScreen.dart';
 import '../../../Meals/presentation/pages/mealsScreen.dart';
 import '../cubit/cubit.dart';

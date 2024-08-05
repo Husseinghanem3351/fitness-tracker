@@ -1,10 +1,10 @@
-import 'package:fitness_tracker2/global/widgets/defaultButton.dart';
-import 'package:fitness_tracker2/global/widgets/defaultTextFormField.dart';
+import 'package:fitness_tracker2/global/widgets/default_button.dart';
+import 'package:fitness_tracker2/global/widgets/default_text_form_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import '../../../../generated/l10n.dart';
-import '../../../../global/globalMethods.dart';
+import '../../../../global/global_methods.dart';
 import '../../domain/entities/meal.dart';
 import '../bloc/MealsCubit/MealsCubit.dart';
 
@@ -90,11 +90,11 @@ class SaveCustomMeal extends StatelessWidget {
     required List<Meal> meals,
     required TextEditingController nameController,
   }) {
-    int carb = 0;
-    int protein = 0;
-    int fat = 0;
-    int calories = 0;
-    int quantity = 0;
+    double carb = 0;
+    double protein = 0;
+    double fat = 0;
+    double calories = 0;
+    double quantity = 0;
     for (int i = 0; i < meals.length; i++) {
       carb += meals[i].carb;
       calories += meals[i].calories;
@@ -102,10 +102,10 @@ class SaveCustomMeal extends StatelessWidget {
       protein += meals[i].protein;
       quantity += int.parse(controllers[i].text);
     }
-    carb = (carb * 100) ~/ quantity;
-    protein = (protein * 100) ~/ quantity;
-    fat = (fat * 100) ~/ quantity;
-    calories = (calories * 100) ~/ quantity;
+    carb = (carb * 100) / quantity;
+    protein = (protein * 100) / quantity;
+    fat = (fat * 100) / quantity;
+    calories = (calories * 100) / quantity;
     return Meal(
       carb: carb,
       fat: fat,
