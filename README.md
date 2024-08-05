@@ -1,7 +1,8 @@
 # fitness_tracker2
 meals data and activites data, should add in your hand in global method file, onOpen just add this:
 
-List<MealModel> basicMeals=[
+
+           List<MealModel> basicMeals=[
            const MealModel(
              carb: 28.5,
              fat: 0,
