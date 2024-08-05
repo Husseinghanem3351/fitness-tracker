@@ -1,10 +1,10 @@
 import '../features/Home/data/model.dart';
 
-double remainingCalories = 0;
-PersonalInfoModel? info;
-double globalFat=0;
-double globalProtein=0;
-double globalCarb=0;
+double eatRemainingCalories = 0;
+PersonalInfoModel? personalInfo;
+double eatingFat=0;
+double eatingProtein=0;
+double eatingCarb=0;
 double requiredFat=0;
 double requiredCarb=0;
 double requiredProtein=0;

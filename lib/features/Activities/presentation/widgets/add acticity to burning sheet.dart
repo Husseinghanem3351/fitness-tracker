@@ -31,7 +31,7 @@ void addActivityToBurningSheet(context, {required Activity activity}) {
                 Text(S.of(context).calories,
                     style: Theme.of(context).textTheme.bodySmall),
                 Text(
-                  ' ${(info!.weight * activity.MES).round()} ${S.of(context).cal}',
+                  ' ${(personalInfo!.weight * activity.MES).round()} ${S.of(context).cal}',
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ],
@@ -62,7 +62,7 @@ void addActivityToBurningSheet(context, {required Activity activity}) {
                       color: Colors.white,
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
-                          double calories = (info!.weight * activity.MES) *
+                          double calories = (personalInfo!.weight * activity.MES) *
                               (int.parse(durationController.text)) /
                               60;
                           DetailsCubit.get(context).addToBurningCalories(

@@ -2,9 +2,7 @@ import 'package:fitness_tracker2/features/Activities/domain/entities/activity.da
 import 'package:fitness_tracker2/global/global.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
 import '../../../../generated/l10n.dart';
-import '../../../Home/presentation/cubit/cubit.dart';
 
 class ActivityElement extends StatelessWidget {
   const ActivityElement({
@@ -58,7 +56,7 @@ class ActivityElement extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    '${(info!.weight*activity.MES).round()}',
+                    '${(personalInfo!.weight*activity.MES).round()}',
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   const SizedBox(width: 10,),

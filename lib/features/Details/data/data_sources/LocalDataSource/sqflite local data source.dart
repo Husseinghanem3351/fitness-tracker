@@ -107,13 +107,13 @@ class DetailsLocalDataSourceImpl implements DetailsLocalDataSource {
         .rawQuery('select * from dailyCalories where date=?', [currentDate]);
 
     DailyCaloriesModel dailyCaloriesModel = DailyCaloriesModel(
-      goalCalories: remainingCalories,
+      goalCalories: eatRemainingCalories,
       eatingCalories: eatingCalories,
       burningCalories: burningCalories,
       date: date,
-      fat: globalFat,
-      protein: globalProtein,
-      carb: globalCarb,
+      fat: eatingFat,
+      protein: eatingProtein,
+      carb: eatingCarb,
     );
     if (dailyCalories.isEmpty) {
       await database.transaction((txn) => txn.insert(

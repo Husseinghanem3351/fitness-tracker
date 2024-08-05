@@ -43,86 +43,86 @@ class HomeCubit extends Cubit<HomeStates> {
     emit(CalculateBmrLoading());
     var data = await CacheHelper.getData(key: 'personalInfo');
     if (data != null) {
-      info = PersonalInfoModel.fromJson(jsonDecode(data));
-      gender = info!.gender;
+      personalInfo = PersonalInfoModel.fromJson(jsonDecode(data));
+      gender = personalInfo!.gender;
       activeLevel = await CacheHelper.getData(key: 'activityLevel');
       goal = await CacheHelper.getData(key: 'goal');
       if (gender == 'Male') {
         print('male');
-        remainingCalories = 66.47 +
-            (13.75 * info!.weight) +
-            (5.003 * info!.height) -
-            (6.755 * info!.age);
+        eatRemainingCalories = 66.47 +
+            (13.75 * personalInfo!.weight) +
+            (5.003 * personalInfo!.height) -
+            (6.755 * personalInfo!.age);
       } else {
         print('female');
-        remainingCalories = 655.1 +
-            (9.563 * info!.weight) +
-            (1.850 * info!.height) -
-            (4.676 * info!.age);
+        eatRemainingCalories = 655.1 +
+            (9.563 * personalInfo!.weight) +
+            (1.850 * personalInfo!.height) -
+            (4.676 * personalInfo!.age);
       }
       switch (activeLevel) {
         case 'Sedentary' || 'كسول':
           {
-            remainingCalories *= 1.2;
-            waterRequired = 30*info!.weight/100;
+            eatRemainingCalories *= 1.2;
+            waterRequired = 30*personalInfo!.weight/100;
             levelIndex = 0; // to determine the saved activity level.
           }
         case 'lightly Active' || 'خفيف النشاط':
           {
-            remainingCalories *= 1.375;
-            waterRequired = 30*info!.weight/1000;
+            eatRemainingCalories *= 1.375;
+            waterRequired = 30*personalInfo!.weight/1000;
             levelIndex = 1;
           }
         case 'Moderately Active' || 'متوسط النشاط':
           {
-            remainingCalories *= 1.55;
-            waterRequired = 30*info!.weight/1000;
+            eatRemainingCalories *= 1.55;
+            waterRequired = 30*personalInfo!.weight/1000;
             levelIndex = 2;
           }
         case 'very Active' || 'نشط جدا':
           {
-            remainingCalories *= 1.725;
+            eatRemainingCalories *= 1.725;
 
-            waterRequired = 49*info!.weight/1000;
+            waterRequired = 49*personalInfo!.weight/1000;
             levelIndex = 3;
           }
         case 'Extra Active' || 'نشط للغاية':
           {
-            remainingCalories *= 1.9;
-            waterRequired = 49*info!.weight/1000;
+            eatRemainingCalories *= 1.9;
+            waterRequired = 49*personalInfo!.weight/1000;
             levelIndex = 4;
           }
       }
       switch (goal) {
         case 'lose weight' || 'خسارة وزن':
           {
-            remainingCalories -= 700;
-            requiredProtein=(.3*remainingCalories)/4;
-            requiredFat=(.25*remainingCalories)/9;
-            requiredCarb=(.45*remainingCalories)/4;
+            eatRemainingCalories -= 700;
+            requiredProtein=(.3*eatRemainingCalories)/4;
+            requiredFat=(.25*eatRemainingCalories)/9;
+            requiredCarb=(.45*eatRemainingCalories)/4;
             goalIndex = 0;
           }
         case 'gain weight' || 'زيادة وزن':
           {
-            remainingCalories += 700;
-            requiredProtein=(.25*remainingCalories)/4;
-            requiredFat=(.25*remainingCalories)/9;
-            requiredCarb=(.5*remainingCalories)/4;
+            eatRemainingCalories += 700;
+            requiredProtein=(.25*eatRemainingCalories)/4;
+            requiredFat=(.25*eatRemainingCalories)/9;
+            requiredCarb=(.5*eatRemainingCalories)/4;
             goalIndex = 2;
           }
         case 'build muscle' || 'بناء عضلات':
           {
-            remainingCalories += 700;
-            requiredProtein=(.25*remainingCalories)/4;
-            requiredFat=(.25*remainingCalories)/9;
-            requiredCarb=(.5*remainingCalories)/4;
+            eatRemainingCalories += 700;
+            requiredProtein=(.25*eatRemainingCalories)/4;
+            requiredFat=(.25*eatRemainingCalories)/9;
+            requiredCarb=(.5*eatRemainingCalories)/4;
             goalIndex = 3; // to determine the goal in screen
           }
         default:
           {
-            requiredProtein=(.2*remainingCalories)/4;
-            requiredFat=(.3*remainingCalories)/9;
-            requiredCarb=(.5*remainingCalories)/4;
+            requiredProtein=(.2*eatRemainingCalories)/4;
+            requiredFat=(.3*eatRemainingCalories)/9;
+            requiredCarb=(.5*eatRemainingCalories)/4;
             goalIndex = 1;
           }
       }

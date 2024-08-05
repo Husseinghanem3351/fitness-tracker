@@ -37,7 +37,7 @@ class DetailsWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                '${remainingCalories.round()}',
+                '${eatRemainingCalories.round()}',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               const SizedBox(
@@ -100,17 +100,17 @@ class DetailsWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ElementQuantity(
-                  quantity: globalFat,
+                  quantity: eatingFat,
                   name: S.of(context).fat,
                   goal: requiredFat,
                 ),
                 ElementQuantity(
-                  quantity: globalProtein,
+                  quantity: eatingProtein,
                   name: S.of(context).protein,
                   goal: requiredProtein,
                 ),
                 ElementQuantity(
-                  quantity: globalCarb,
+                  quantity: eatingCarb,
                   name: S.of(context).carb,
                   goal: requiredCarb,
                 ),

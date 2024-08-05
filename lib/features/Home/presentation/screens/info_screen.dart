@@ -20,10 +20,10 @@ class InfoScreen extends StatefulWidget {
 }
 
 class _InfoScreenState extends State<InfoScreen> {
-  final TextEditingController weightController = TextEditingController(text: info?.weight.toString());
-  final TextEditingController nameController = TextEditingController(text: info?.name);
-  final TextEditingController ageController = TextEditingController(text: info?.age.toString());
-  final TextEditingController heightController = TextEditingController(text: info?.height.toString());
+  final TextEditingController weightController = TextEditingController(text: personalInfo?.weight.toString());
+  final TextEditingController nameController = TextEditingController(text: personalInfo?.name);
+  final TextEditingController ageController = TextEditingController(text: personalInfo?.age.toString());
+  final TextEditingController heightController = TextEditingController(text: personalInfo?.height.toString());
   int index = 0;
 
   @override

@@ -35,49 +35,49 @@ class DetailsCubit extends Cubit<DetailsStates> {
   }
 
   Future<void> calculateDetailsCalories() async {
-    remainingCalories = remainingCalories - burningCalories + eatingCalories;
-    globalCarb = 0;
-    globalProtein = 0;
-    globalFat = 0;
+    eatRemainingCalories = eatRemainingCalories - burningCalories + eatingCalories;
+    eatingCarb = 0;
+    eatingProtein = 0;
+    eatingFat = 0;
     eatingCalories = 0;
     burningCalories = 0;
     int i = 0;
     while (i < details.length) {
       if (details[i].date.day == DateTime.now().day) {
         if (details[i].runtimeType == EatingCaloriesModel) {
-          remainingCalories -= details[i].calories;
-          globalCarb += details[i].carb;
-          globalProtein += details[i].protein;
-          globalFat += details[i].fat;
+          eatRemainingCalories -= details[i].calories;
+          eatingCarb += details[i].carb;
+          eatingProtein += details[i].protein;
+          eatingFat += details[i].fat;
           eatingCalories += details[i].calories;
         } else {
-          remainingCalories += details[i].calories;
+          eatRemainingCalories += details[i].calories;
           burningCalories += details[i].calories;
           String goal = await CacheHelper.getData(key: 'goal');
           switch (goal) {
             case 'lose weight' || 'خسارة وزن':
               {
-                requiredProtein = (.3 * remainingCalories) / 4;
-                requiredFat = (.25 * remainingCalories) / 9;
-                requiredCarb = (.45 * remainingCalories) / 4;
+                requiredProtein = (.3 * eatRemainingCalories) / 4;
+                requiredFat = (.25 * eatRemainingCalories) / 9;
+                requiredCarb = (.45 * eatRemainingCalories) / 4;
               }
             case 'gain weight' || 'زيادة وزن':
               {
-                requiredProtein = (.25 * remainingCalories) / 4;
-                requiredFat = (.25 * remainingCalories) / 9;
-                requiredCarb = (.5 * remainingCalories) / 4;
+                requiredProtein = (.25 * eatRemainingCalories) / 4;
+                requiredFat = (.25 * eatRemainingCalories) / 9;
+                requiredCarb = (.5 * eatRemainingCalories) / 4;
               }
             case 'build muscle' || 'بناء عضلات':
               {
-                requiredProtein = (.25 * remainingCalories) / 4;
-                requiredFat = (.25 * remainingCalories) / 9;
-                requiredCarb = (.5 * remainingCalories) / 4;
+                requiredProtein = (.25 * eatRemainingCalories) / 4;
+                requiredFat = (.25 * eatRemainingCalories) / 9;
+                requiredCarb = (.5 * eatRemainingCalories) / 4;
               }
             default:
               {
-                requiredProtein = (.2 * remainingCalories) / 4;
-                requiredFat = (.3 * remainingCalories) / 9;
-                requiredCarb = (.5 * remainingCalories) / 4;
+                requiredProtein = (.2 * eatRemainingCalories) / 4;
+                requiredFat = (.3 * eatRemainingCalories) / 9;
+                requiredCarb = (.5 * eatRemainingCalories) / 4;
               }
           }
         }
