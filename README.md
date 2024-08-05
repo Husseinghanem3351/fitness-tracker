@@ -27,8 +27,6 @@ in details the user has activities and meals did what each one add calories or b
 and there is statistics that calculate your calories and food values each day I get this statistics from dailyCalories table.
 dailyCalories table will be updated after each add to details by adding the current values to we have to the table.
 
-A new Flutter project.
-
 ## Getting Started
 
 This project is a starting point for a Flutter application.
