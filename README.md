@@ -24,6 +24,11 @@ Flutter • Dart • Firebase • SQLite • Bloc
 1. Clone the repository:
    ```bash
    git clone https://github.com/Husseinghanem3351/fitness-tracker
+2. Run flutter pub get
+
+3. Start with flutter run
+
+
 
 meals data and activites data, should add in your hand in global method file, onOpen just add this:
 
