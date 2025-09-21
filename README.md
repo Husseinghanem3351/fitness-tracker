@@ -1,4 +1,30 @@
-# fitness_tracker2
+
+
+---
+
+### 🏋️‍♂️ 2. Fitness Tracker
+```markdown
+# Fitness Tracker
+Health & workout tracking mobile application.
+
+## Features
+- Track workouts and calories
+- Offline caching with SQLite
+- Cloud sync using Firebase
+- Custom charts for calories & exercise statistics
+- Clean Architecture with multi-layered state management
+
+## Tech Stack
+Flutter • Dart • Firebase • SQLite • Bloc
+
+## Demo
+[Watch Video](https://youtu.be/HgYLUL1AokI)
+
+## Getting Started
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Husseinghanem3351/fitness-tracker
+
 meals data and activites data, should add in your hand in global method file, onOpen just add this:
 
 
